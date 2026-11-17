@@ -1,0 +1,48 @@
+{
+	"id": 917536,
+	"name": "Tester",
+	"level": 1691,
+	"avatar_url": "\/img\/sprites\/events\/halloween-22\/fractured_moon_ghost.png",
+	"background_url": "\/img\/bg\/207.png",
+	"guild": { "id": 3994, "name": "The Cult Of SV" },
+	"motto": "Have a wonderful day",
+	"profile_number": "0000",
+	"experience": 71452192,
+	"last_activity": "2026-11-17T15:25:37.000000Z",
+	"currencies": { "gold": 81624279, "diamonds": 822 },
+	"statistics": {
+		"steps": 25080,
+		"npc_kills": 2960,
+		"user_kills": 51,
+		"quests_performed": 939,
+		"quests_completed": 11,
+		"tasks_completed": 128,
+		"boss_kills": 0,
+		"market_trades": 1590,
+		"reputation": 7,
+		"bounties_completed": 1,
+		"dailies_unlocked": 70,
+		"chests_opened": 247
+	},
+	"stats": {
+		"core": { "str": 2365, "def": 200, "dex": 810, "add_crit": 0 },
+		"equipment": { "str": 3033, "def": 5839, "dex": 0, "add_crit": 0 },
+		"bonus": {
+			"fixed": { "str": 134, "def": 0, "dex": 0, "add_crit": 0 },
+			"percentage": { "str": 0, "def": 0, "dex": 0, "add_crit": 0 }
+		},
+		"total": { "str": 5532, "def": 6039, "dex": 810, "add_crit": 0 }
+	},
+	"available_stat_points": 20,
+	"current_health": 8530,
+	"max_health": 8530,
+	"current_energy": 5,
+	"max_energy": 5,
+	"current_quest_points": 5,
+	"max_quest_points": 5,
+	"membership": 1,
+	"safe_mode": false,
+	"safe_mode_expires_at": null,
+	"creation_date": "2022-10-17T16:43:41.000000Z",
+	"location": { "id": 8, "name": "Desert of Eternal Dreams" }
+}

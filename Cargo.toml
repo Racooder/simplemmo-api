@@ -2,5 +2,27 @@
 name = "simplemmo-api"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
+repository = "https://github.com/Racooder/simplemmo-api"
+readme = "README.md"
+
+[features]
+default = ["rustls"]
+rustls = ["reqwest/rustls"]
+native-tls = ["reqwest/native-tls"]
 
 [dependencies]
+chrono = { version = "0.4", default-features = false, features = [
+    "serde",
+    "std",
+    "clock",
+] }
+reqwest = { version = "0.13", default-features = false, features = ["json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+url = "2"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
+wiremock = "0.6"
