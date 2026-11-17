@@ -4,7 +4,7 @@
 [![Docs.rs](https://img.shields.io/docsrs/simplemmo-api)](https://docs.rs/simplemmo-api)
 [![CI](https://github.com/Racooder/simplemmo-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Racooder/simplemmo-api/actions)
 [![License](https://img.shields.io/crates/l/simplemmo-api.svg)](#license)
-[![MSRV](https://img.shields.io/badge/rustc-1.99%2B-blue.svg)](#minimum-supported-rust-version)
+[![MSRV](https://img.shields.io/badge/rustc-1.88%2B-blue.svg)](#minimum-supported-rust-version)
 
 An **unofficial**, async Rust client for the [SimpleMMO API](https://web.simple-mmo.com/p-api/home).
 
@@ -156,7 +156,7 @@ let client = Client::builder()
 
 ## Minimum Supported Rust Version
 
-The MSRV is **Rust 1.99**. Raising it is considered a minor-version change.
+The MSRV is **Rust 1.88**. Raising it is considered a minor-version change.
 
 ## Contributing
 
@@ -172,7 +172,7 @@ Tests use [`wiremock`](https://crates.io/crates/wiremock); no real API key is
 needed to run them. When adding an endpoint, please include a real (anonymized)
 response as a fixture in `tests/fixtures/`.
 
-[CONTRIBUTING.md](https://github.com/Racooder/simplemmo-api/blob/main/docs/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://github.com/Racooder/simplemmo-api/blob/main/.github/CONTRIBUTING.md)
 
 ## Changelog
 
