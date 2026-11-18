@@ -21,7 +21,7 @@ async fn me_parses_response() {
         .and(body_json(serde_json::json!({ "api_key": "test-key" })))
         .respond_with(
             ResponseTemplate::new(200)
-                .set_body_raw(include_str!("fixtures/me.json"), "application/json"),
+                .set_body_raw(include_str!("fixtures/player/me.json"), "application/json"),
         )
         .mount(&server)
         .await;
