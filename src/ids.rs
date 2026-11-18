@@ -22,5 +22,6 @@ macro_rules! id_type {
 }
 
 id_type!(GuildId);
+id_type!(ItemId);
 id_type!(LocationId);
 id_type!(PlayerId);

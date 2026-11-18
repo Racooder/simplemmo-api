@@ -1,7 +1,8 @@
+use std::collections::HashMap;
+
 use crate::{
-    ids::{GuildId, LocationId, PlayerId},
-    models::de::bool_from_int,
-    models::de::bool_from_nonzero,
+    ids::{GuildId, ItemId, LocationId, PlayerId},
+    models::de::{bool_from_int, bool_from_nonzero},
 };
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
@@ -44,14 +45,14 @@ pub struct PlayerInfoWire {
     #[serde(rename = "str")]
     pub strength: u64,
     #[serde(rename = "def")]
-    pub defense: u64,
+    pub defence: u64,
     #[serde(rename = "dex")]
     pub dexterity: u64,
     // From my testing bonus stats in v1 seem to be equipment stats in v2
     #[serde(rename = "bonus_dex")]
     pub bonus_dexterity: u64,
     #[serde(rename = "bonus_def")]
-    pub bonus_defense: u64,
+    pub bonus_defence: u64,
     #[serde(rename = "bonus_str")]
     pub bonus_strength: u64,
 
@@ -130,12 +131,12 @@ impl From<PlayerInfoWire> for PlayerInfo {
             stats: InfoStats {
                 core: InfoStatBlock {
                     strength: value.strength,
-                    defense: value.defense,
+                    defence: value.defence,
                     dexterity: value.dexterity,
                 },
                 equipment: InfoStatBlock {
                     strength: value.bonus_strength,
-                    defense: value.bonus_defense,
+                    defence: value.bonus_defence,
                     dexterity: value.bonus_dexterity,
                 },
             },
@@ -181,6 +182,104 @@ pub struct PlayerMe {
     pub safe_mode_expires_at: Option<DateTime<Utc>>,
     pub creation_date: DateTime<Utc>,
     pub location: Location,
+}
+
+#[derive(Deserialize)]
+pub struct EquippedItemWire {
+    item_id: ItemId,
+    name: String,
+    #[serde(rename = "type")]
+    item_type: String,
+    description: String,
+    stat1: Option<String>,
+    stat1modifier: Option<i64>,
+    stat2: Option<String>,
+    stat2modifier: Option<i64>,
+    stat3: Option<String>,
+    stat3modifier: Option<i64>,
+}
+
+#[derive(Deserialize)]
+#[serde(untagged)]
+pub(crate) enum EquipmentWire {
+    Map(HashMap<String, EquippedItemWire>),
+    List(Vec<EquippedItemWire>),
+}
+
+impl From<EquipmentWire> for Vec<EquippedItem> {
+    fn from(value: EquipmentWire) -> Self {
+        let wires: Vec<_> = match value {
+            EquipmentWire::Map(m) => m.into_values().collect(),
+            EquipmentWire::List(l) => l,
+        };
+        let mut items: Vec<EquippedItem> = wires.into_iter().map(Into::into).collect();
+        items.sort_by_key(|i| i.item_id.0);
+        items
+    }
+}
+
+impl From<EquippedItemWire> for EquippedItem {
+    fn from(value: EquippedItemWire) -> Self {
+        let modifiers = [
+            (value.stat1, value.stat1modifier),
+            (value.stat2, value.stat2modifier),
+            (value.stat3, value.stat3modifier),
+        ]
+        .into_iter()
+        .filter_map(|(stat, modifier)| {
+            let stat = stat.filter(|s| s != "none")?;
+            Some(StatModifier {
+                stat: Stat::from(stat),
+                value: modifier?,
+            })
+        })
+        .collect();
+
+        Self {
+            item_id: value.item_id,
+            name: value.name,
+            item_type: value.item_type,
+            description: value.description,
+            modifiers,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize)]
+#[non_exhaustive]
+pub struct EquippedItem {
+    pub item_id: ItemId,
+    pub name: String,
+    pub item_type: String,
+    pub description: String,
+    pub modifiers: Vec<StatModifier>,
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub struct StatModifier {
+    pub stat: Stat,
+    pub value: i64,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize)]
+#[non_exhaustive]
+pub enum Stat {
+    Strength,
+    // British
+    Defence,
+    Dexterity,
+    Other(String),
+}
+
+impl From<String> for Stat {
+    fn from(value: String) -> Self {
+        match value.as_str() {
+            "str" => Stat::Strength,
+            "def" => Stat::Defence,
+            "dex" => Stat::Dexterity,
+            _ => Stat::Other(value),
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -230,7 +329,7 @@ pub struct InfoStats {
 #[derive(Debug, Clone, Serialize)]
 pub struct InfoStatBlock {
     pub strength: u64,
-    pub defense: u64,
+    pub defence: u64,
     pub dexterity: u64,
 }
 
@@ -253,7 +352,7 @@ pub struct StatBlock {
     #[serde(rename = "str")]
     pub strength: u64,
     #[serde(rename = "def")]
-    pub defense: u64,
+    pub defence: u64,
     #[serde(rename = "dex")]
     pub dexterity: u64,
     pub add_crit: u64,

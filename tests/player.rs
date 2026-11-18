@@ -53,6 +53,30 @@ async fn info_parses_response() {
 }
 
 #[tokio::test]
+async fn equipment_parses_response() {
+    let server = MockServer::start().await;
+
+    Mock::given(method("POST"))
+        .and(path("/v1/player/equipment/883369"))
+        .and(body_json(serde_json::json!({ "api_key": "test-key" })))
+        .respond_with(ResponseTemplate::new(200).set_body_raw(
+            include_str!("fixtures/player/equipment.json"),
+            "application/json",
+        ))
+        .mount(&server)
+        .await;
+
+    let equipment = client_for(&server)
+        .player()
+        .equipment(883369)
+        .await
+        .unwrap();
+
+    assert_eq!(equipment.len(), 13);
+    assert_eq!(equipment.get(0).unwrap().name, "The Seer");
+}
+
+#[tokio::test]
 async fn me_maps_rate_limit() {
     let server = MockServer::start().await;
 

@@ -2,7 +2,7 @@ use crate::{
     PlayerId,
     client::Client,
     error::Result,
-    models::player::{PlayerInfo, PlayerInfoWire, PlayerMe},
+    models::player::{EquipmentWire, EquippedItem, PlayerInfo, PlayerInfoWire, PlayerMe},
 };
 
 pub struct PlayerApi<'a> {
@@ -18,5 +18,14 @@ impl PlayerApi<'_> {
 
     pub async fn me(&self) -> Result<PlayerMe> {
         self.client.post("v2/player/me").await
+    }
+
+    pub async fn equipment(&self, id: impl Into<PlayerId>) -> Result<Vec<EquippedItem>> {
+        let id = id.into();
+        let wire: EquipmentWire = self
+            .client
+            .post(&format!("v1/player/equipment/{id}"))
+            .await?;
+        Ok(wire.into())
     }
 }
