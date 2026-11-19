@@ -1,4 +1,4 @@
-use simplemmo_api::{Client, Error};
+use simplemmo_api::{Client, Error, models::player::skills::SkillType};
 use wiremock::{
     Mock, MockServer, ResponseTemplate,
     matchers::{body_json, method, path},
@@ -77,6 +77,27 @@ async fn equipment_parses_response() {
 }
 
 #[tokio::test]
+async fn skills_parses_response() {
+    let server = MockServer::start().await;
+
+    Mock::given(method("POST"))
+        .and(path("/v1/player/skills/883369"))
+        .and(body_json(serde_json::json!({ "api_key": "test-key" })))
+        .respond_with(ResponseTemplate::new(200).set_body_raw(
+            include_str!("fixtures/player/skills.json"),
+            "application/json",
+        ))
+        .mount(&server)
+        .await;
+
+    let skills = client_for(&server).player().skills(883369).await.unwrap();
+
+    assert_eq!(skills.len(), 7);
+    assert_eq!(skills.get(0).unwrap().skill_type, SkillType::Mining);
+    assert_eq!(skills.get(1).unwrap().level, 24);
+}
+
+#[tokio::test]
 async fn me_maps_rate_limit() {
     let server = MockServer::start().await;
 
@@ -88,4 +109,23 @@ async fn me_maps_rate_limit() {
     let err = client_for(&server).player().me().await.unwrap_err();
 
     assert!(matches!(err, Error::RateLimited { retry_after: Some(d) } if d.as_secs() == 7));
+}
+
+#[test]
+fn skill_type_round_trips() {
+    use SkillType::*;
+    let all = [
+        Mining,
+        Fishing,
+        TreasureHunting,
+        Woodcutting,
+        LegacyCrafting,
+        EventGathering,
+        Crafting,
+    ];
+    for v in all {
+        let s: String = v.clone().into();
+        assert_eq!(SkillType::from(s.clone()), v, "wire string {s:?}");
+        assert!(!matches!(SkillType::from(s), SkillType::Other(_)));
+    }
 }
