@@ -83,7 +83,7 @@ Endpoints are grouped into sub-clients: `client.player()`, `client.guild()`, and
 | Player     | Player Information         | ✅ Implemented |
 | Player     | Your Information V2 (`me`) | ✅ Implemented |
 | Player     | Player Equipped Items      | ✅ Implemented |
-| Player     | Player Skills              | ⬜ Planned     |
+| Player     | Player Skills              | ✅ Implemented |
 | Guild      | List of Guilds             | ⬜ Planned     |
 | Guild      | Guild Information          | ⬜ Planned     |
 | Guild      | Guild Members              | ⬜ Planned     |
