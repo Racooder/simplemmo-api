@@ -3,7 +3,7 @@ use serde::de::DeserializeOwned;
 use std::{sync::Arc, time::Duration};
 
 use crate::{
-    api::player::PlayerApi,
+    api::{guild::GuildApi, player::PlayerApi},
     error::{Error, Result},
 };
 
@@ -29,14 +29,27 @@ impl Client {
         PlayerApi { client: self }
     }
 
-    // Later: guild(), items(), market(), orphanage(), world_bosses()
+    pub fn guild(&self) -> GuildApi<'_> {
+        GuildApi { client: self }
+    }
+
+    // Later: items(), market(), orphanage(), world_bosses()
 
     pub(crate) async fn post<T: DeserializeOwned>(&self, path: &str) -> Result<T> {
+        self.post_query(path, &[]).await
+    }
+
+    pub(crate) async fn post_query<T: DeserializeOwned>(
+        &self,
+        path: &str,
+        query: &[(&str, String)],
+    ) -> Result<T> {
         let url = self.inner.base_url.join(path)?;
         let resp = self
             .inner
             .http
             .post(url)
+            .query(query)
             .json(&serde_json::json!({ "api_key": self.inner.api_key }))
             .send()
             .await?;

@@ -6,6 +6,7 @@ use crate::{
     models::{
         de::{bool_from_int, bool_from_nonzero},
         player::shared::{GuildRef, Location, Statistics},
+        web::WebPath,
     },
 };
 
@@ -15,8 +16,7 @@ pub struct InfoWire {
     pub name: String,
     pub level: u64,
     #[serde(rename = "avatar")]
-    pub avatar_url: String,
-    // Maps to background_url with /img/bg/<background_id>.png
+    pub avatar_path: String,
     #[serde(rename = "background")]
     pub background_id: u64,
     pub guild: Option<GuildRef>,
@@ -82,8 +82,8 @@ pub struct Info {
     pub id: PlayerId,
     pub name: String,
     pub level: u64,
-    pub avatar_url: String,
-    pub background_url: String,
+    pub avatar: WebPath,
+    pub background: WebPath,
     pub guild: Option<GuildRef>,
     pub motto: String,
     pub profile_number: String,
@@ -103,13 +103,12 @@ pub struct Info {
 
 impl From<InfoWire> for Info {
     fn from(value: InfoWire) -> Self {
-        let background_id = value.background_id;
         Self {
             id: value.id,
             name: value.name,
             level: value.level,
-            avatar_url: value.avatar_url,
-            background_url: format!("/img/bg/{background_id}.png"),
+            avatar: WebPath::new(value.avatar_path),
+            background: WebPath::new(format!("/img/bg/{}.png", value.background_id)),
             guild: value.guild,
             motto: value.motto,
             profile_number: value.profile_number,

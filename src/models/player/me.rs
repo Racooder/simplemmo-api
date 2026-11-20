@@ -6,6 +6,7 @@ use crate::{
     models::{
         de::bool_from_nonzero,
         player::shared::{GuildRef, Location, Statistics},
+        web::WebPath,
     },
 };
 
@@ -15,8 +16,10 @@ pub struct Me {
     pub id: PlayerId,
     pub name: String,
     pub level: u64,
-    pub avatar_url: String,
-    pub background_url: String,
+    #[serde(rename = "avatar_url")]
+    pub avatar: WebPath,
+    #[serde(rename = "background_url")]
+    pub background: WebPath,
     pub guild: Option<GuildRef>,
     pub motto: String,
     pub profile_number: String,

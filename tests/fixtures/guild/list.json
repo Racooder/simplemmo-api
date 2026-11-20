@@ -1,0 +1,213 @@
+{
+	"current_page": 1,
+	"current_page_url": "https:\/\/api.simple-mmo.com\/v1\/guilds\/all?page=1",
+	"data": [
+		{
+			"id": 4,
+			"name": "The Origin",
+			"tag": "TO",
+			"owner": 319475,
+			"passive": 0,
+			"icon": "S_Holy03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 6,
+			"name": "Legendary Guild",
+			"tag": "",
+			"owner": 77021,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 7,
+			"name": "A Legendary Guild",
+			"tag": "LG",
+			"owner": 47144,
+			"passive": 0,
+			"icon": "S_Shadow08.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 9,
+			"name": "Paragon",
+			"tag": "",
+			"owner": 28454,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 10,
+			"name": "The Pacifist Guild",
+			"tag": "",
+			"owner": 16213,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 12,
+			"name": "-Knight Oaths'-",
+			"tag": "",
+			"owner": 36525,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 13,
+			"name": "Friendship Guild",
+			"tag": "",
+			"owner": 32355,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 16,
+			"name": "Druidic",
+			"tag": "",
+			"owner": 5730,
+			"passive": 0,
+			"icon": "S_Poison03.png",
+			"total_experience": 5287,
+			"current_season_exp": 0
+		},
+		{
+			"id": 17,
+			"name": "Our Humble Abode",
+			"tag": "",
+			"owner": 69514,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 20,
+			"name": "Simple Guild",
+			"tag": "",
+			"owner": 20517,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 21,
+			"name": "Space Pirate Guild",
+			"tag": "",
+			"owner": 60747,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 22,
+			"name": "Paladin Night",
+			"tag": "",
+			"owner": 53639,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 23,
+			"name": "The Battalion",
+			"tag": "",
+			"owner": 67640,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 30,
+			"name": "In eXile",
+			"tag": "",
+			"owner": 17337,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 34,
+			"name": "The Merchant's guild",
+			"tag": "",
+			"owner": 34128,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 36,
+			"name": "65536th hole",
+			"tag": "",
+			"owner": 72424,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 39,
+			"name": "GorillaWizards",
+			"tag": "GW",
+			"owner": 52738,
+			"passive": 0,
+			"icon": "S_Magic11.png",
+			"total_experience": 267565285,
+			"current_season_exp": 144850
+		},
+		{
+			"id": 43,
+			"name": "The MerryMen of SMMO",
+			"tag": "MM",
+			"owner": 77247,
+			"passive": 0,
+			"icon": "two\/32px\/FieryAxe_32.png",
+			"total_experience": 98651975,
+			"current_season_exp": 0
+		},
+		{
+			"id": 46,
+			"name": "Friendless Friends Inc.",
+			"tag": "",
+			"owner": 77083,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		},
+		{
+			"id": 47,
+			"name": "Vibe",
+			"tag": "",
+			"owner": 76085,
+			"passive": 0,
+			"icon": "S_Wind03.png",
+			"total_experience": 0,
+			"current_season_exp": 0
+		}
+	],
+	"first_page_url": "https:\/\/api.simple-mmo.com\/v1\/guilds\/all?page=1",
+	"from": 1,
+	"next_page_url": "https:\/\/api.simple-mmo.com\/v1\/guilds\/all?page=2",
+	"path": "https:\/\/api.simple-mmo.com\/v1\/guilds\/all",
+	"per_page": 20,
+	"prev_page_url": null,
+	"to": 20
+}
