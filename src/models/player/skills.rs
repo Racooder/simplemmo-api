@@ -30,8 +30,8 @@ impl From<String> for SkillType {
 }
 
 impl From<SkillType> for String {
-    fn from(k: SkillType) -> Self {
-        match k {
+    fn from(t: SkillType) -> Self {
+        match t {
             SkillType::Mining => "mining".into(),
             SkillType::Fishing => "fishing".into(),
             SkillType::TreasureHunting => "treasurehunter".into(),
