@@ -7,7 +7,7 @@ use simplemmo_api::Client;
 async fn main() -> simplemmo_api::Result<()> {
     let key = std::env::var("SIMPLEMMO_API_KEY").expect("set SIMPLEMMO_API_KEY");
     let guild_id: u64 = std::env::var("GUILD_ID")
-        .expect("set PLAYER_ID")
+        .expect("set GUILD_ID")
         .parse()
         .unwrap();
     let client = Client::builder().api_key(key).build()?;
