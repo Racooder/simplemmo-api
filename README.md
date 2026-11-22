@@ -71,7 +71,7 @@ async fn main() -> simplemmo_api::Result<()> {
 Run the bundled example:
 
 ```sh
-SIMPLEMMO_API_KEY=your_key cargo run --example me
+SIMPLEMMO_API_KEY=your_key cargo run --example player_me
 ```
 
 ## API coverage
