@@ -29,7 +29,7 @@ async fn list_parses_response() {
     let list = client_for(&server).guild().list(1).await.unwrap();
 
     assert_eq!(list.items.len(), 20);
-    assert_eq!(list.items.get(0).unwrap().id, GuildId(4));
+    assert_eq!(list.items.first().unwrap().id, GuildId(4));
 }
 
 #[tokio::test]

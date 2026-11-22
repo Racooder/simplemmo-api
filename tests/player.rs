@@ -73,7 +73,7 @@ async fn equipment_parses_response() {
         .unwrap();
 
     assert_eq!(equipment.len(), 13);
-    assert_eq!(equipment.get(0).unwrap().name, "The Seer");
+    assert_eq!(equipment.first().unwrap().name, "The Seer");
 }
 
 #[tokio::test]
@@ -93,7 +93,7 @@ async fn skills_parses_response() {
     let skills = client_for(&server).player().skills(883369).await.unwrap();
 
     assert_eq!(skills.len(), 7);
-    assert_eq!(skills.get(0).unwrap().skill_type, SkillType::Mining);
+    assert_eq!(skills.first().unwrap().skill_type, SkillType::Mining);
     assert_eq!(skills.get(1).unwrap().level, 24);
 }
 
