@@ -1,7 +1,8 @@
 # simplemmo-api
 
-[![Crates.io](https://img.shields.io/crates/v/simplemmo-api.svg)](https://crates.io/crates/simplemmo-api)
-[![Docs.rs](https://img.shields.io/docsrs/simplemmo-api)](https://docs.rs/simplemmo-api)
+<!--[![Crates.io](https://img.shields.io/crates/v/simplemmo-api.svg)](https://crates.io/crates/simplemmo-api)-->
+<!--[![Docs.rs](https://img.shields.io/docsrs/simplemmo-api)](https://docs.rs/simplemmo-api)-->
+
 [![CI](https://github.com/Racooder/simplemmo-api/actions/workflows/ci.yaml/badge.svg)](https://github.com/Racooder/simplemmo-api/actions)
 [![License](https://img.shields.io/github/license/Racooder/simplemmo-api)](https://github.com/Racooder/simplemmo-api/blob/main/LICENSE)
 [![MSRV](https://img.shields.io/badge/rustc-1.88%2B-blue.svg)](#minimum-supported-rust-version)
