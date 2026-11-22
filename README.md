@@ -86,8 +86,8 @@ Endpoints are grouped into sub-clients: `client.player()`, `client.guild()`, and
 | Player     | Player Skills              | ✅ Implemented |
 | Guild      | List of Guilds             | ✅ Implemented |
 | Guild      | Guild Information          | ✅ Implemented |
-| Guild      | Guild Members              | ⬜ Planned     |
-| Guild      | Guild Member Contribution  | ⬜ Planned     |
+| Guild      | Guild Members              | ✅ Implemented |
+| Guild      | Guild Member Contribution  | ✅ Implemented |
 | Guild      | Guild Wars                 | ⬜ Planned     |
 | Guild      | Guild Seasons (All)        | ⬜ Planned     |
 | Guild      | Guild Seasons Leaderboards | ⬜ Planned     |

@@ -1,7 +1,10 @@
 use crate::{
-    Client, GuildId, Result,
+    Client, GuildId, PlayerId, Result,
     models::{
-        guild::{info::Info, list::GuildSummary},
+        guild::{
+            info::Info, list::GuildSummary, member_contribution::MemberContribution,
+            members::GuildMember,
+        },
         page::{Page, PageWire},
     },
 };
@@ -21,7 +24,26 @@ impl GuildApi<'_> {
     }
 
     pub async fn info(&self, id: impl Into<GuildId>) -> Result<Info> {
-        let id = id.into();
+        let id: GuildId = id.into();
         self.client.post(&format!("v1/guilds/info/{id}")).await
+    }
+
+    pub async fn members(&self, id: impl Into<GuildId>) -> Result<Vec<GuildMember>> {
+        let id: GuildId = id.into();
+        self.client.post(&format!("v1/guilds/members/{id}")).await
+    }
+
+    pub async fn member_contribution(
+        &self,
+        guild_id: impl Into<GuildId>,
+        player_id: impl Into<PlayerId>,
+    ) -> Result<MemberContribution> {
+        let guild_id: GuildId = guild_id.into();
+        let player_id: PlayerId = player_id.into();
+        self.client
+            .post(&format!(
+                "v1/guilds/members/{guild_id}/contribution/{player_id}"
+            ))
+            .await
     }
 }
