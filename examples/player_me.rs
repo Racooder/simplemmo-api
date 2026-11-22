@@ -1,7 +1,7 @@
 use simplemmo_api::Client;
 
 // Usage:
-// SIMPLEMMO_API_KEY=<your_api_key> cargo run --example me
+// SIMPLEMMO_API_KEY=<your_api_key> cargo run --example player_me
 
 #[tokio::main]
 async fn main() -> simplemmo_api::Result<()> {
