@@ -1,0 +1,17 @@
+[
+    {
+        "guild_1": { "id": 8422, "name": "The Cult Of SV", "kills": 127 },
+        "guild_2": { "id": 7822, "name": "TEAM", "kills": 3 },
+        "status": "ongoing"
+    },
+    {
+        "guild_1": { "id": 2381, "name": "The Devil", "kills": 1107 },
+        "guild_2": { "id": 8422, "name": "The Cult Of SV", "kills": 25 },
+        "status": "ongoing"
+    },
+    {
+        "guild_1": { "id": 4651, "name": "Sun Farm", "kills": 1337 },
+        "guild_2": { "id": 8422, "name": "The Cult Of SV", "kills": 135 },
+        "status": "ongoing"
+    }
+]
